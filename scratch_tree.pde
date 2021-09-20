@@ -3,7 +3,7 @@ void setup(){
     size(500, 500);
     background(255);
     tree = new Tree();
-    int size = 5;
+    int size = 7;
     IfTree[] treea = new IfTree[size]; //<>//
     for(int i=0; i<size; i++){
       treea[i] = new IfTree();

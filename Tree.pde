@@ -7,10 +7,14 @@ class Tree{
     
   }
   
-  void draw(float x, float y, int w){
+  void drawSelf(float x, float y){
     fill(c);
     circle(x, y, 50);
     fill(255);
+  }
+  
+  void draw(float x, float y, int w){
+    drawSelf(x, y);
     for(int i=0; i<array.size(); i++){
       Tree tree = array.get(i);
       System.out.println(tree.getClass().getSimpleName());
@@ -27,7 +31,7 @@ class Tree{
           tree.draw(newX, newY, w/2);
           line(x, y, newX, newY);
         }else{
-          newX=x+((i-1)*w/array.size());
+          newX=x+((i-s)*w/array.size());
           tree.draw(newX, newY, w/2);
           line(x, y, newX, newY);
         }
