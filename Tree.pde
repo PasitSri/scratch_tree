@@ -25,13 +25,13 @@ class Tree{
         line(x, y, newX, newY);
         tree.draw(newX, newY, w/2);
       }else{
-        float s = array.size()/2;
+        float s = array.size()/2-0.5;
+        System.out.println(s);
+        newX = x+((i-s)*(w/array.size()));
         if(i<s){
-          newX=x-((i+1)*w/array.size());
           tree.draw(newX, newY, w/2);
           line(x, y, newX, newY);
         }else{
-          newX=x+((i-s)*w/array.size());
           tree.draw(newX, newY, w/2);
           line(x, y, newX, newY);
         }
