@@ -1,12 +1,11 @@
-public class ForTree extends Tree{
-  color c = color(2,100,105);
+public class IfTree extends Tree{
+  color c = color(2,100,25);
   void draw(float x, float y, int w){
     fill(c);
     circle(x, y, 50);
     fill(255);
     for(int i=0; i<array.size(); i++){
       Tree tree = array.get(i);
-      
       float newX;
       float newY = y+70;
       if(array.size()%2==1){
@@ -25,7 +24,6 @@ public class ForTree extends Tree{
           line(x, y, newX, newY);
         }
       }
-      
     }
   }
 }
