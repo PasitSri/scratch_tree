@@ -8,6 +8,12 @@ public class Variable extends Tree{
     text(command, x, y+32);
   }
 
+  void drawSelf(float x, float y){
+    fill(c);
+    circle(x, y, 50);
+    fill(255);
+  }
+
   String getCommand(){
     return command+";";
   }

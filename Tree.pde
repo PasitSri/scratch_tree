@@ -1,8 +1,7 @@
-
-class Tree{
+public class Tree{
+  color c = #004d40;  //red
   String command = "";
   ArrayList<Tree> array = new ArrayList<Tree>();
-  color c = color(#d11141);  //red
   void add(Tree a){
     array.add(a);
     
@@ -28,7 +27,7 @@ class Tree{
   }
 
   void drawBlock(float x, float y){
-    fill(255);
+    fill(c);
     rect(x, y, textWidth(command), textAscent()+10);
     fill(0);
     textSize(32);
