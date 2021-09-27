@@ -2,8 +2,14 @@ public class Tree{
   color c = #004d44;  //red
   String command = "";
   ArrayList<Tree> array = new ArrayList<Tree>();
+  float width = 0;
+  float height = 0;
   void add(Tree a, int e){
     array.add(e, a);
+  }
+
+  void remove(int e){
+    array.remove(e);
   }
   
   void drawSelf(float x, float y){
@@ -27,7 +33,9 @@ public class Tree{
 
   void drawBlock(float x, float y){
     fill(c);
-    rect(x, y, textWidth(command), textAscent()+10);
+    width = textWidth(command);
+    height = textAscent()+10;
+    rect(x, y, width, height);
     fill(0);
     textSize(32);
     text(command, x, y+32);
@@ -108,6 +116,10 @@ public class Tree{
       }
     }
     return check;
+  }
+
+  void checkRemove(float x, float y){
+    /*if(mouseX<)*/
   }
 
   void drawAllBlock(float x, float y){

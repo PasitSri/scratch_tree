@@ -45,6 +45,8 @@ void draw(){
   v.drawBlock(100, 100);
   i.drawBlock(100, 200);
   f.drawBlock(100, 300);
+  fill(10);
+  rect(100, 400, 100, 50);
   all.drawAllBlock(500, 40);
   all.draw(width/2, height*0.5, width/2);
   //treea[2].draw(width/2, 300, 200);
@@ -64,6 +66,9 @@ void mousePressed(){
   else if(state==3){
     all.checkAllBlock(500, 40, new ForTree());
   }
+  else if(state==4){
+    all.checkRemove(500, 40);
+  }
 
   if(mouseX>100 && mouseX<200 && mouseY>100 && mouseY<132){
     state=1;
@@ -76,7 +81,12 @@ void mousePressed(){
   else if(mouseX>100 && mouseX<200 && mouseY>300 && mouseY<332){
     state=3;
     textState="For";
-  }else{
+  }
+  else if(mouseX>100 && mouseX<200 && mouseY>400 && mouseY<432){
+    state=4;
+    textState="Remove";
+  }
+  else{
     state=0;
     textState="";
   }
