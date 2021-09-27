@@ -2,6 +2,7 @@ Tree all = new Tree();
 Variable v;
 IfTree i;
 ForTree f;
+String textState="";
 int state=0;
 void setup(){
   v = new Variable();
@@ -47,34 +48,36 @@ void draw(){
   all.drawAllBlock(500, 40);
   all.draw(width/2, height*0.5, width/2);
   //treea[2].draw(width/2, 300, 200);
+  fill(0);
+  text(textState, 900, 100);
+  System.out.println(all.getCommand());
 }
+
 
 void mousePressed(){
   if(state==1){
-    text("Var", 600, 100);
-    System.out.println("Var");
     all.checkAllBlock(500, 40, new Variable());
   }
   else if(state==2){
-    text("If", 600, 100);
-    System.out.println("If");
     all.checkAllBlock(500, 40, new IfTree());
   }
   else if(state==3){
-    text("For", 600, 100);
-    System.out.println("For");
     all.checkAllBlock(500, 40, new ForTree());
   }
 
   if(mouseX>100 && mouseX<200 && mouseY>100 && mouseY<132){
     state=1;
+    textState="Var";
   }
   else if(mouseX>100 && mouseX<200 && mouseY>200 && mouseY<232){
     state=2;
+    textState="If";
   }
   else if(mouseX>100 && mouseX<200 && mouseY>300 && mouseY<332){
     state=3;
+    textState="For";
   }else{
     state=0;
+    textState="";
   }
 }
