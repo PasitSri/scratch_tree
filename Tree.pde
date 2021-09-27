@@ -1,10 +1,15 @@
 public class Tree{
-  color c = #004d40;  //red
+  color c = #004d44;  //red
   String command = "";
   ArrayList<Tree> array = new ArrayList<Tree>();
-  void add(Tree a){
-    array.add(a);
-    
+  float width = 0;
+  float height = 0;
+  void add(Tree a, int e){
+    array.add(e, a);
+  }
+
+  void remove(int e){
+    array.remove(e);
   }
   
   void drawSelf(float x, float y){
@@ -28,7 +33,9 @@ public class Tree{
 
   void drawBlock(float x, float y){
     fill(c);
-    rect(x, y, textWidth(command), textAscent()+10);
+    width = textWidth(command);
+    height = textAscent()+10;
+    rect(x, y, width, height);
     fill(0);
     textSize(32);
     text(command, x, y+32);
@@ -88,6 +95,48 @@ public class Tree{
     }
   }
 
+  int checkAllBlock(float x, float y, Tree tree){
+    int check = checkHover(x, y);
+    int h=0;
+    System.out.println(check);
+    if(check == 2){
+      add(tree, 0);
+      System.out.println("add");
+      return 0;
+    }
+    for(int i=0; i<array.size(); i++){
+      int c=0;
+      Tree t = array.get(i);
+      h += 42;
+      c = t.checkAllBlock(x+25, y+h, tree);
+      h += 42*t.getSize();
+      if(c == 1){
+        add(tree, i+1);
+        System.out.println("add");
+      }
+    }
+    return check;
+  }
+
+  int checkRemove(float x, float y){
+    int h=0;
+    for(int i=0; i<array.size(); i++){
+      Tree t = array.get(i);
+      h += 42;
+      int a = t.checkRemove(x+25, y+h);
+      if(a==1){
+        return 1;
+      }
+      h += 42*t.getSize();
+      if(mouseX>x+25 && mouseX<x+25+t.width && mouseY>y && mouseY<y+h+t.height){
+        System.out.println("remove");
+        remove(i);
+        return 1;
+      }
+    }
+    return 0;
+  }
+
   void drawAllBlock(float x, float y){
     drawBlock(x, y);
     checkHover(x, y);
@@ -101,6 +150,11 @@ public class Tree{
   }
 
   int getSize(){
-    return array.size();
+    int size = array.size();
+    for(int i=0; i<array.size(); i++){
+      Tree t = array.get(i);
+      size += t.getSize();
+    }
+    return size;
   }
 }
