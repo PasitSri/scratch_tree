@@ -53,7 +53,7 @@ void StartPage(){
   c = color(0, 0, 0);
   fill(c);
   textSize(25);
-//  text("Output", (width/5)*4+10, 50);
+  text("Output", (width/5)*4+10, 50);
   all.setCommand("START");
   
   v = new Variable();
