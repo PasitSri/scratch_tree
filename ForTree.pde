@@ -1,27 +1,20 @@
 public class ForTree extends Tree{
-  color c = color(#9ecee6);  //sky
+  color c = color(#b569af);
   void drawSelf(float x, float y){
     fill(c);
     circle(x, y, 50);
     fill(255);
   }
-
-  ForTree(){
-    setCommand(10);
-  }
-
   void drawBlock(float x, float y){
     fill(c);
-    width = textWidth(command);
-    height = textAscent()+10;
-    rect(x, y, width, height);
+    rect(x, y, textWidth(command)+20, textAscent()+10,30);
     fill(0);
     textSize(32);
-    text(command, x, y+32);
+    text(command, x+10, y+32);
   }
 
   void setCommand(int n){
-    command = String.format("for(int i=0; i<%d; i++)", n);
+    command = "for(int i=0; i<"+str(n)+"; i++)";
   }
 
   String getCommand(){

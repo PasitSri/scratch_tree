@@ -1,27 +1,18 @@
 public class Tree{
-  color c = #004d44;  //red
+  color c = #ed6146;  //red
   String command = "";
   ArrayList<Tree> array = new ArrayList<Tree>();
-  float width = 0;
-  float height = 0;
-  void add(Tree a, int e){
-    array.add(e, a);
+  void add(Tree a){
+    array.add(a);
   }
-
-  void remove(int e){
-    array.remove(e);
-  }
-  
   void drawSelf(float x, float y){
     fill(c);
     circle(x, y, 50);
     fill(255);
   }
-
   void setCommand(String s){
     command = s;
   }
-
   String getCommand(){
     String result = "";
     for(int i=0; i<array.size(); i++){
@@ -30,17 +21,13 @@ public class Tree{
     }
     return result;
   }
-
   void drawBlock(float x, float y){
     fill(c);
-    width = textWidth(command);
-    height = textAscent()+10;
-    rect(x, y, width, height);
+    rect(x, y, textWidth(command)+20, textAscent()+10,30);
     fill(0);
     textSize(32);
-    text(command, x, y+32);
+    text(command, x+10, y+32);
   }
-  
   void draw(float x, float y, int w){
     drawSelf(x, y);
     for(int i=0; i<array.size(); i++){
@@ -66,7 +53,6 @@ public class Tree{
       }
     }
   }
-
   int checkHover(float x, float y){
     if(mouseX>x && mouseX<x+textWidth(command)/2 && mouseY>y && mouseY<y+35){
       stroke(#9162e4);
@@ -94,67 +80,21 @@ public class Tree{
       return 0;
     }
   }
-
-  int checkAllBlock(float x, float y, Tree tree){
-    int check = checkHover(x, y);
-    int h=0;
-    System.out.println(check);
-    if(check == 2){
-      add(tree, 0);
-      System.out.println("add");
-      return 0;
-    }
-    for(int i=0; i<array.size(); i++){
-      int c=0;
-      Tree t = array.get(i);
-      h += 42;
-      c = t.checkAllBlock(x+25, y+h, tree);
-      h += 42*t.getSize();
-      if(c == 1){
-        add(tree, i+1);
-        System.out.println("add");
-      }
-    }
-    return check;
-  }
-
-  int checkRemove(float x, float y){
-    int h=0;
-    for(int i=0; i<array.size(); i++){
-      Tree t = array.get(i);
-      h += 42;
-      int a = t.checkRemove(x+25, y+h);
-      if(a==1){
-        return 1;
-      }
-      h += 42*t.getSize();
-      if(mouseX>x+25 && mouseX<x+25+t.width && mouseY>y && mouseY<y+h+t.height){
-        System.out.println("remove");
-        remove(i);
-        return 1;
-      }
-    }
-    return 0;
-  }
-
   void drawAllBlock(float x, float y){
     drawBlock(x, y);
     checkHover(x, y);
     int h=0;
     for(int i=0; i<array.size(); i++){
       Tree tree = array.get(i);
+      System.out.println(i+" "+tree.command);
       h += 42;
       tree.drawAllBlock(x+25, y+h);
       h += 42*tree.getSize();
     }
+    
   }
 
   int getSize(){
-    int size = array.size();
-    for(int i=0; i<array.size(); i++){
-      Tree t = array.get(i);
-      size += t.getSize();
-    }
-    return size;
+    return array.size();
   }
 }

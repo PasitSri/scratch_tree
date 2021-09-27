@@ -1,21 +1,11 @@
 public class Variable extends Tree{
-  color c = color(#42a5f5);
+  color c = color(#feb249);
   void drawBlock(float x, float y){
     fill(c);
-    width = textWidth(command);
-    height = textAscent()+10;
-    rect(x, y, width, height);
+    rect(x, y, textWidth(command)+20, textAscent()+10,30);
     fill(0);
     textSize(32);
-    text(command, x, y+32);
-  }
-
-  Variable(){
-    setCommand("a=");
-  }
-
-  void setCommand(String s){
-    command = s;
+    text(command, x+10, y+32);
   }
 
   void drawSelf(float x, float y){
