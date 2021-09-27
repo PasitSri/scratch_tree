@@ -52,7 +52,6 @@ void draw(){
   //treea[2].draw(width/2, 300, 200);
   fill(0);
   text(textState, 900, 100);
-  System.out.println(all.getCommand());
 }
 
 

@@ -118,8 +118,23 @@ public class Tree{
     return check;
   }
 
-  void checkRemove(float x, float y){
-    /*if(mouseX<)*/
+  int checkRemove(float x, float y){
+    int h=0;
+    for(int i=0; i<array.size(); i++){
+      Tree t = array.get(i);
+      h += 42;
+      int a = t.checkRemove(x+25, y+h);
+      if(a==1){
+        return 1;
+      }
+      h += 42*t.getSize();
+      if(mouseX>x+25 && mouseX<x+25+t.width && mouseY>y && mouseY<y+h+t.height){
+        System.out.println("remove");
+        remove(i);
+        return 1;
+      }
+    }
+    return 0;
   }
 
   void drawAllBlock(float x, float y){
