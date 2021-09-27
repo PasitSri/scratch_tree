@@ -138,7 +138,7 @@ public class Tree{
         return 1;
       }
       h += 42*t.getSize();
-      if(mouseX>x+25 && mouseX<x+25+t.width && mouseY>y && mouseY<y+h+t.height){
+      if(mouseX>x+25 && mouseX<x+25+t.width && mouseY>y && mouseY<y+h+t.height+10){
         System.out.println("remove");
         remove(i);
         return 1;
