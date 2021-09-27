@@ -6,6 +6,10 @@ public class IfTree extends Tree{
     fill(255);
   }
 
+  IfTree(){
+    setCommand("");
+  }
+
   void setCommand(String s){
     command = "if("+s+")";
   }

@@ -2,6 +2,7 @@ Tree all = new Tree();
 Variable v;
 IfTree i;
 ForTree f;
+int state=0;
 void setup(){
   v = new Variable();
   i = new IfTree();
@@ -26,24 +27,54 @@ void setup(){
     v4.setCommand("j=1/2");
     test.setCommand("a == b");
     f1.setCommand(10);
-    test.add(v3);
-    test.add(if2);
-    all.add(v1);
-    all.add(v2);
-    all.add(test);
-    all.add(v4);
-    all.add(f1);
-    f1.add(v1);
-    f1.add(v1);
-    f1.add(v1);
-    System.out.println(all.getCommand());
+    /*test.add(v3);*/
+    /*test.add(if2);*/
+    /*all.add(v1);*/
+    /*all.add(v2);*/
+    /*all.add(test);*/
+    /*all.add(v4);*/
+    /*all.add(f1);*/
+    /*f1.add(v1);*/
+    /*f1.add(v1);*/
+    /*f1.add(v1);*/
     
 }
 void draw(){
+  background(255);
   v.drawBlock(100, 100);
   i.drawBlock(100, 200);
   f.drawBlock(100, 300);
   all.drawAllBlock(500, 40);
-  all.draw(width/2, height*0.8, width/2);
+  all.draw(width/2, height*0.5, width/2);
   //treea[2].draw(width/2, 300, 200);
+}
+
+void mousePressed(){
+  if(state==1){
+    text("Var", 600, 100);
+    System.out.println("Var");
+    all.checkAllBlock(500, 40, new Variable());
+  }
+  else if(state==2){
+    text("If", 600, 100);
+    System.out.println("If");
+    all.checkAllBlock(500, 40, new IfTree());
+  }
+  else if(state==3){
+    text("For", 600, 100);
+    System.out.println("For");
+    all.checkAllBlock(500, 40, new ForTree());
+  }
+
+  if(mouseX>100 && mouseX<200 && mouseY>100 && mouseY<132){
+    state=1;
+  }
+  else if(mouseX>100 && mouseX<200 && mouseY>200 && mouseY<232){
+    state=2;
+  }
+  else if(mouseX>100 && mouseX<200 && mouseY>300 && mouseY<332){
+    state=3;
+  }else{
+    state=0;
+  }
 }

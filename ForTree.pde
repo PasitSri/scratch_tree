@@ -6,6 +6,10 @@ public class ForTree extends Tree{
     fill(255);
   }
 
+  ForTree(){
+    setCommand(10);
+  }
+
   void drawBlock(float x, float y){
     fill(c);
     rect(x, y, textWidth(command), textAscent()+10);
