@@ -4,6 +4,14 @@ public class Tree{
   ArrayList<Tree> array = new ArrayList<Tree>();
   float width = 0;
   float height = 0;
+  float x = 0;
+  float y = 0;
+
+  void setPosition(float x, float y){
+    this.x=x;
+    this.y=y;
+  }
+
   void add(Tree a, int e){
     array.add(e, a);
   }
@@ -95,7 +103,7 @@ public class Tree{
     }
   }
 
-  int checkAllBlock(float x, float y, Tree tree){
+  int checkAllBlock(Tree tree){
     int check = checkHover(x, y);
     int h=0;
     System.out.println(check);
@@ -108,7 +116,8 @@ public class Tree{
       int c=0;
       Tree t = array.get(i);
       h += 42;
-      c = t.checkAllBlock(x+25, y+h, tree);
+      t.setPosition(x+25, y+h);
+      c = t.checkAllBlock(tree);
       h += 42*t.getSize();
       if(c == 1){
         add(tree, i+1);
@@ -118,12 +127,13 @@ public class Tree{
     return check;
   }
 
-  int checkRemove(float x, float y){
+  int checkRemove(){
     int h=0;
     for(int i=0; i<array.size(); i++){
       Tree t = array.get(i);
       h += 42;
-      int a = t.checkRemove(x+25, y+h);
+      t.setPosition(x+25, y+h);
+      int a = t.checkRemove();
       if(a==1){
         return 1;
       }
@@ -137,14 +147,15 @@ public class Tree{
     return 0;
   }
 
-  void drawAllBlock(float x, float y){
+  void drawAllBlock(){
     drawBlock(x, y);
     checkHover(x, y);
     int h=0;
     for(int i=0; i<array.size(); i++){
       Tree tree = array.get(i);
       h += 42;
-      tree.drawAllBlock(x+25, y+h);
+      tree.setPosition(x+25, y+h);
+      tree.drawAllBlock();
       h += 42*tree.getSize();
     }
   }
