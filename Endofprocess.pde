@@ -8,9 +8,9 @@ public class EOP extends Tree{
   }
   void drawBlock(float x, float y){
     fill(c);
-    rect(x, y, textWidth(command)+20, textAscent()+10,30);
+    rect(x-25, y, textWidth(command)+20, textAscent()+10,30);
     fill(0);
     textSize(32);
-    text(command, x+10, y+32);
+    text(command, x-15, y+32);
   }
 }

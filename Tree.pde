@@ -14,12 +14,13 @@ public class Tree{
     command = s;
   }
   String getCommand(){
-    String result = "";
+    return command;
+    /*String result = "";
     for(int i=0; i<array.size(); i++){
       Tree tree = array.get(i);
       result += tree.getCommand();
     }
-    return result;
+    return result;*/
   }
   void drawBlock(float x, float y){
     fill(c);
@@ -86,7 +87,7 @@ public class Tree{
     int h=0;
     for(int i=0; i<array.size(); i++){
       Tree tree = array.get(i);
-      System.out.println(i+" "+tree.command);
+      //System.out.println(i+" "+tree.getCommand());
       h += 42;
       tree.drawAllBlock(x+25, y+h);
       h += 42*tree.getSize();
@@ -96,5 +97,8 @@ public class Tree{
 
   int getSize(){
     return array.size();
+  }
+  void remove(int e){
+    array.remove(e);
   }
 }

@@ -1,10 +1,47 @@
 Tree all = new Tree();
+Tree OutputPage = new Tree();
 Variable v;
 IfTree i;
 ForTree f;
+EOP e;
+OutPut o;
 void setup(){
   fullScreen();
   background(230);
+  StartPage();
+  Variable v1 = new Variable();
+  v1.setCommand("A","1000");
+  all.add(v1);
+  OutPut o1 = new OutPut();
+  all.add(o1);
+  o1.setCommand(v1);
+  
+  Variable v2 = new Variable();
+  v2.setCommand("B","500");
+  all.add(v2);
+  OutPut o2 = new OutPut();
+  all.add(o2);
+  o2.setCommand(v2);
+  
+  Variable v3 = new Variable();
+  v3.setCommand("Dog","1500");
+  all.add(v3);
+  OutPut o3 = new OutPut();
+  all.add(o3);
+  o3.setCommand(v3);
+  
+  all.add(o2);
+  o2.setCommand(v2);
+  
+  all.add(e);
+}
+
+void draw(){
+  all.drawAllBlock((width/5)*2,100);
+  OutputPage.drawAllBlock((width/5)*4+10,100);
+}
+
+void StartPage(){
   color c;
   noStroke();
   c = color(79, 128, 226);
@@ -16,51 +53,23 @@ void setup(){
   c = color(0, 0, 0);
   fill(c);
   textSize(25);
-  text("Output", (width/5)*4+10, 50);
+//  text("Output", (width/5)*4+10, 50);
+  all.setCommand("START");
   
   v = new Variable();
-  v.setCommand("Variable");
+  v.setCommand("Variable     "," ");
   
   i = new IfTree();
   i.setCommand("");
   
   f = new ForTree();
-  f.setCommand("10");
-  all.setCommand("START");
-  Variable v1 = new Variable();
-  all.add(v1);
-  v1.setCommand("a == 2");
+  f.setCommand("Loop For");
+  o = new OutPut();
+  e = new EOP();
+  OutputPage.setCommand("Out put");
   
-  IfTree if2 = new IfTree();
-  all.add(if2);
-  if2.setCommand("b==5");
-  
-  ForTree f1 = new ForTree();
-  all.add(f1);
-    /*if2.setCommand("b==5");
-    v1.setCommand("a=2");
-    v2.setCommand("b=2");
-    v3.setCommand("c=a+b");
-    v4.setCommand("j=1/2");
-    test.setCommand("a == b");*/
-  f1.setCommand(10);
-    /*test.add(v3);
-    test.add(if2);
-    all.add(v1);
-    all.add(v2);
-    all.add(test);
-    all.add(v4);*/
-  f1.add(v1);
-  f1.add(v1);
-  f1.add(v1);
-   // System.out.println(all.getCommand());
-}
-void draw(){
   v.drawBlock(30,100);
-  //System.out.println(v.getCommand());
-  i.drawBlock(30,200);
-  f.drawBlock(30,300);
-  all.drawAllBlock((width/5)*2,100);
-  //all.draw(width/2, height*0.8, width/2);
-  //treea[2].draw(width/2, 300, 200);
+  i.drawBlock(30,150);
+  f.drawBlock(30,200);
+  o.drawBlock(30,250);
 }

@@ -27,4 +27,7 @@ public class Variable extends Tree{
   String getCommand(){
     return command+";";
   }
+  String getVname(){
+    return Vname;
+  }
 }
