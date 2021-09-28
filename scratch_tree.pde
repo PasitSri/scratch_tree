@@ -8,6 +8,16 @@ int state=0;
 void setup(){
   fullScreen();
   StartPage();
+  v = new Variable();
+  i = new IfTree();
+  f = new ForTree();
+  all.setCommand("Start");
+  all.setPosition(width*0.5, 40);
+  v.drawBlock(50, 100);
+  i.drawBlock(50, 200);
+  f.drawBlock(50, 300);
+  fill(10);
+  rect(50, 400, 100, 30);
 }
 void draw(){
   all.drawAllBlock();
@@ -67,14 +77,4 @@ void StartPage(){
   fill(c);
   textSize(25);
   text("Output", (width/5)*4+10, 50);
-  v = new Variable();
-  i = new IfTree();
-  f = new ForTree();
-  all.setCommand("Start");
-  all.setPosition(width*0.5, 40);
-  v.drawBlock(50, 100);
-  i.drawBlock(50, 200);
-  f.drawBlock(50, 300);
-  fill(10);
-  rect(50, 400, 100, 30);
 }
