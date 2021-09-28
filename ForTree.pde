@@ -12,12 +12,12 @@ public class ForTree extends Tree{
 
   void drawBlock(float x, float y){
     fill(c);
-    width = textWidth(command);
+    width = textWidth(command)+40;
     height = textAscent()+10;
-    rect(x, y, width, height);
-    fill(0);
+    rect(x, y, width, height,30);
+    fill(255);
     textSize(32);
-    text(command, x, y+32);
+    text(command, x+20, y+32);
   }
 
   void setCommand(int n){

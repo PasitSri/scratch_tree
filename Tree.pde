@@ -1,5 +1,5 @@
 public class Tree{
-  color c = #004d44;  //red
+  color c = #fead4c;  //red
   String command = "";
   ArrayList<Tree> array = new ArrayList<Tree>();
   float width = 0;
@@ -41,12 +41,12 @@ public class Tree{
 
   void drawBlock(float x, float y){
     fill(c);
-    width = textWidth(command);
+    width = textWidth(command)+40;
     height = textAscent()+10;
-    rect(x, y, width, height);
-    fill(0);
+    rect(x, y, width, height,30);
+    fill(255);
     textSize(32);
-    text(command, x, y+32);
+    text(command, x+20, y+32);
   }
   
   void draw(float x, float y, int w){
