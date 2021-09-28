@@ -4,25 +4,36 @@ IfTree i;
 ForTree f;
 String textState="";
 int state=0;  
-
+color c;
 void setup(){
   fullScreen();
-  StartPage();
+  background(255);
+}
+void draw(){
+  background(255);
+  noStroke();
+  c = color(79, 128, 226);
+  fill(c);
+  rect(0, 0, width/5, height);
+  c = color(255, 255, 255);
+  fill(c);
+  rect((width/5)*4, 0, width, height);
+  c = color(0, 0, 0);
+  fill(c);
+  textSize(25);
+  text("Output", (width/5)*4+10, 50);
   v = new Variable();
   i = new IfTree();
   f = new ForTree();
-  all.setCommand("Start");
-  all.setPosition(width*0.5, 40);
   v.drawBlock(50, 100);
   i.drawBlock(50, 200);
   f.drawBlock(50, 300);
-  fill(10);
-  rect(50, 400, 100, 30);
-}
-void draw(){
+  
+  all.setCommand("Start");
+  all.setPosition(width*0.5, 40);
+  
   all.drawAllBlock();
   all.draw(width/2, height*0.5, width/2);
-  //treea[2].draw(width/2, 300, 200);
   fill(0);
   text(textState, width*0.9, 100);
 }
@@ -62,19 +73,4 @@ void mousePressed(){
     state=0;
     textState="";
   }
-}
-void StartPage(){
-  background(255);
-  color c;
-  noStroke();
-  c = color(79, 128, 226);
-  fill(c);
-  rect(0, 0, width/5, height);
-  c = color(255, 255, 255);
-  fill(c);
-  rect((width/5)*4, 0, width, height);
-  c = color(0, 0, 0);
-  fill(c);
-  textSize(25);
-  text("Output", (width/5)*4+10, 50);
 }
