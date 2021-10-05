@@ -20,6 +20,8 @@ public class Tree{
     array.remove(e);
   }
   
+  void useCommand();
+  
   void drawSelf(float x, float y){
     fill(c);
     circle(x, y, 50);

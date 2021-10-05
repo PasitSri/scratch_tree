@@ -31,10 +31,10 @@ public class Variable extends Tree{
   void setVname(String s){
     Vname = s;
   }
-  void setVvalue(String s){
-    Vvalue = s;
+  void setValue(String s){
+    value = Integer.parseInt(s);
   }
-  String getCommand(){
-    return command+";";
+  int getValue(){
+    return value;
   }
 }

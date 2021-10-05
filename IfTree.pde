@@ -1,5 +1,6 @@
 public class IfTree extends Tree{
   color c = color(#4ca64c);  //green
+  Tree condition;
   void drawSelf(float x, float y){
     fill(c);
     circle(x, y, 50);
@@ -9,9 +10,17 @@ public class IfTree extends Tree{
   IfTree(){
     setCommand("");
   }
+  
+  void useCommand(){
+    if(condition.useCommand()){
+      for(int i=0; i<array.size();i++){
+        Tree tree = array.get(i);
+        tree.useCommand();
+    }
+  }
 
-  void setCommand(String s){
-    command = "if("+s+")";
+  void setCondition(boolean s){
+    command = s;
   }
 
   String getCommand(){
