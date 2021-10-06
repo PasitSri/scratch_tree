@@ -5,8 +5,8 @@ color c;
 Tree current = null;
 boolean dragedState = false;
 void setup(){
-  /*fullScreen();*/
-  size(1000, 500);
+  fullScreen();
+  /*size(1000, 500);*/
   background(255);
   textSize(30);
   i = new IfTree(20, 100);

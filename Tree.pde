@@ -218,11 +218,11 @@ public class Tree{
 
   void drawAllBlock(Tree e){
     drawBlock();
-    int l;
-    if(addState){
-      l = checkHover(e.x, e.y);
-    }else{
-      l = checkHover(this.x, this.y);
+    int l = checkHover(x, y);
+    if(e != null){
+      if(addState){
+        l = checkHover(e.x, e.y);
+      }
     }
     if(l==1){
       stroke(#9162e4);
