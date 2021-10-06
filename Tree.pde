@@ -108,7 +108,6 @@ public class Tree{
   int checkAllBlock(Tree tree){
     int check = checkHover(x, y);
     int h=0;
-    System.out.println(check);
     if(check == 2){
       add(tree, 0);
       System.out.println("add");
