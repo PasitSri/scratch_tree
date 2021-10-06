@@ -16,28 +16,43 @@ public class IfTree extends Tree{
     fill(255);
   }
 
+  void setPosition(int x, int y){
+    this.x=x;
+    this.y=y;
+    Xa = x+50;
+    Xb = x+170;
+  }
+
   void useCommand(){
-    if(condition.useCommand()){
+    if(a==b){
       for(int i=0; i<array.size();i++){
         Tree tree = array.get(i);
         tree.useCommand();
+      }
     }
   }
 
-  void press(int x, int y) { //<>//
+  void presses(int mx, int my) { 
     println(selectedA, selectedB);
-    if (overBox(x, y) == 1) {
+    if (overBox(mx, my) == 1) {
       selectedA = true;
       selectedB = false;
-    }else if(overBox(x, y) == 2){
+    }else if(overBox(mx, my) == 2){
       selectedA = false;
       selectedB = true;
     }
-    else if(overBox(x, y)==0) {
+    else if(overBox(mx, my)==0) {
       selectedA = false;
       selectedB = false;
     }
     println(selectedA, selectedB);
+    int h=0;
+    for(Tree tree: array){
+      h += 42;
+      tree.setPosition(x+25, y+h);
+      tree.presses(mx, my);
+      h += 42*tree.getSize();
+    }
   }
 
   void drawBlock(float x, float y){
@@ -51,7 +66,6 @@ public class IfTree extends Tree{
     rect(x, y, width, height,30);
     if(selectedA){
       fill(BackgroundSelected);
-      println("hi");
     }else{
       fill(Background);
     }
@@ -73,7 +87,7 @@ public class IfTree extends Tree{
     text("=", x+20+100, y+32);
   }
 
-  boolean KEYPRESSED(char KEY, int KEYCODE) { //<>//
+  boolean keypressed(char KEY, int KEYCODE) {
     println(selectedA,selectedB);
     if (selectedA) {
       if (KEYCODE == (int)BACKSPACE) {
@@ -119,6 +133,7 @@ public class IfTree extends Tree{
 
   private void addText(char text, int state) {
     // IF THE TEXT WIDHT IS IN BOUNDARIES OF THE TEXTBOX
+    textSize(20);
     if(state==1){
       if (textWidth(Sa + text) < W) {
         Sa += text;

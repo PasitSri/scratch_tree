@@ -20,7 +20,22 @@ public class Tree{
     array.remove(e);
   }
   
-  void useCommand();
+  void useCommand(){}
+  void presses(){}
+
+  void presses(int mx, int my){
+    int h=0;
+    for(Tree tree: array){
+      tree.presses(mx, my);
+    }
+  }
+
+  boolean keypressed(char KEY, int KEYCODE){
+    for(Tree tree: array){
+      tree.keypressed(KEY, KEYCODE);
+    }
+    return true;
+  }
   
   void drawSelf(float x, float y){
     fill(c);

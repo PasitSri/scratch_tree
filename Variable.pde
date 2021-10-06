@@ -5,6 +5,7 @@ public class Variable extends Tree{
   String Vtype = " ";
   String current = "";
   int currentString = 0;
+  int value;
   void drawBlock(float x, float y){
     width = textWidth(command)+40;
     height = textAscent()+10;

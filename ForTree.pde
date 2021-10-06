@@ -1,5 +1,6 @@
 public class ForTree extends Tree{
   color c = color(#9ecee6);  //sky
+  int n=0;
   void drawSelf(float x, float y){
     fill(c);
     circle(x, y, 50);
@@ -7,13 +8,13 @@ public class ForTree extends Tree{
   }
 
   ForTree(){
-    setCommand(10);
+    setRepeat(10);
   }
 
   void drawBlock(float x, float y){
     fill(c);
     width = textWidth(command)+40;
-    height = textAscent()+10;S
+    height = textAscent()+10;
     rect(x, y, width, height,30);
     fill(255);
     textSize(32);
