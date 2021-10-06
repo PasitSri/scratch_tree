@@ -1,3 +1,4 @@
+import java.util.Iterator;
 public class Tree{
   color c = #fead4c;  //red
   String command = "";
@@ -6,7 +7,6 @@ public class Tree{
   float height = 0;
   float x = 0;
   float y = 0;
-  boolean onBox = false;
   boolean locked = false;
   float xOffset=0, yOffset=0;
 
@@ -38,15 +38,30 @@ public class Tree{
     }
   }
 
-  void dragedBlock(){
+  boolean dragedBlock(ArrayList all){
     if(locked){
       x=mouseX-xOffset;
       y=mouseY-yOffset;
+      return true;
     }
+    for(int i=0; i<array.size(); i++){
+      Tree tree = array.get(i);
+      boolean ch = tree.dragedBlock(all);
+      if(ch){
+        println(x, y, x+width, y+height);
+        println(tree.x, tree.y);
+        if((tree.x<x || tree.x>x+width ) && (tree.y<y || tree.y>y+height)){
+          println("hi");
+          remove(array.indexOf(tree));
+          all.add(tree);
+        }
+      }
+    }
+    return false;
   }
 
   void presses(){
-    if(onBox){
+    if(mouseX>x && mouseX<x+width && mouseY>y && mouseY<y+height){
       locked = true;
     }else{
       locked = false;
@@ -192,11 +207,6 @@ public class Tree{
   }
 
   void drawAllBlock(){
-    if(mouseX>x && mouseX<x+width && mouseY>y && mouseY<y+height){
-      onBox = true;
-    }else{
-      onBox = false;
-    }
     drawBlock();
     int h=0;
     for(Tree tree: array){

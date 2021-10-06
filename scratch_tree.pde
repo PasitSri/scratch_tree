@@ -57,7 +57,8 @@ void mousePressed(){
 }
 
 void mouseDragged(){
-  for(Tree e:all){
-    e.dragedBlock();
+  for(int i=0; i<all.size(); i++){
+    Tree e = all.get(i);
+    e.dragedBlock(all);
   }
 }
