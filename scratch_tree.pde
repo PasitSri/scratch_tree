@@ -32,6 +32,9 @@ void draw(){ //<>//
 }
 
 void keyPressed(){
+  for(Tree e:all){
+    e.keypressed(key, keyCode);
+  }
 }
 
 void mousePressed(){
@@ -39,16 +42,17 @@ void mousePressed(){
     println("test");
     IfTree newClass = new IfTree(i.x, i.y);
     all.add(newClass);
-    newClass.presses();
   }
   if(mouseX>f.x && mouseX<f.x+f.width && mouseY>f.y && mouseY<f.y+f.height){
     println("test2");
     ForTree newClass = new ForTree(f.x, f.y);
     all.add(newClass);
-    newClass.presses();
   }
   for(Tree e: all){
     e.presses();
+  }
+  for(Tree e: all){
+    e.edit();
   }
 }
 

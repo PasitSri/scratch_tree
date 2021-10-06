@@ -41,7 +41,6 @@ public class IfTree extends Tree{
   void edit() { 
     int mx = mouseX;
     int my = mouseY;
-    println(selectedA, selectedB);
     if (overBox(mx, my) == 1) {
       selectedA = true;
       selectedB = false;
@@ -53,6 +52,7 @@ public class IfTree extends Tree{
       selectedA = false;
       selectedB = false;
     }
+    println(selectedA, selectedB);
   }
 
   void drawBlock(){
