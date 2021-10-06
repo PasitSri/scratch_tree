@@ -1,15 +1,14 @@
 public class IfTree extends Tree{
   color c = color(#4ca64c);  //green
-  boolean selectedB = true;
-  boolean selectedA = true;
-  String Text = "";
-  int La =0, Lb = 0;
+  boolean selectedB = false;
+  boolean selectedA = false;
+  int La =1, Lb = 1;
   float a=0, b=0;
   int W=50;
   color BackgroundSelected = color(160, 160, 160);
   color Background = color(140, 140, 140);
   float Xa, Xb;
-  String Sa="", Sb="";
+  String Sa="0", Sb="0";
 
   void drawSelf(float x, float y){
     fill(c);
@@ -17,7 +16,8 @@ public class IfTree extends Tree{
     fill(255);
   }
 
-  void PRESSED(int x, int y) {
+  void press(int x, int y) { //<>//
+    println(selectedA, selectedB);
     if (overBox(x, y) == 1) {
       selectedA = true;
       selectedB = false;
@@ -29,6 +29,7 @@ public class IfTree extends Tree{
       selectedA = false;
       selectedB = false;
     }
+    println(selectedA, selectedB);
   }
 
   void drawBlock(float x, float y){
@@ -55,6 +56,7 @@ public class IfTree extends Tree{
     }
     rect(x+170, y, W, height,30);
     fill(0);
+    textSize(20);
     text(Sa, Xa, y+32);
     text(Sb, Xb, y+32);
     fill(255);
@@ -63,7 +65,7 @@ public class IfTree extends Tree{
     text("=", x+20+100, y+32);
   }
 
-  boolean KEYPRESSED(char KEY, int KEYCODE) {
+  boolean KEYPRESSED(char KEY, int KEYCODE) { //<>//
     println(selectedA,selectedB);
     if (selectedA) {
       if (KEYCODE == (int)BACKSPACE) {
@@ -157,7 +159,4 @@ public class IfTree extends Tree{
     }
     return 0;
   }
-
-
 }
-

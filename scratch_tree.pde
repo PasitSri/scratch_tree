@@ -6,11 +6,12 @@ String textState="";
 int state=0;  
 color c;
 void setup(){
+  i = new IfTree();
   /*fullScreen();*/
   size(500, 500);
   background(255);
 }
-void draw(){
+void draw(){ //<>//
   /*background(255);*/
   /*noStroke();*/
   /*c = color(79, 128, 226);*/
@@ -24,11 +25,10 @@ void draw(){
   /*textSize(25);*/
   /*text("Output", (width/5)*4+10, 50);*/
   v = new Variable();
-  i = new IfTree();
   f = new ForTree();
   /*v.drawBlock(50, 100);*/
   i.drawBlock(50, 200);
-  println(i.selectedA, i.selectedB);
+  /*println(i.selectedA, i.selectedB);*/
   /*println(i.x, i.x+i.width);*/
   /*println(mouseX, mouseY);*/
   /*f.drawBlock(50, 300);*/
@@ -43,11 +43,11 @@ void draw(){
 }
 
 void keyPressed(){
-  i.KEYPRESSED(key, keyCode);
+  i.KEYPRESSED(key, keyCode); //<>//
 }
 
 void mousePressed(){
-  i.PRESSED(mouseX, mouseY);
+  i.press(mouseX, mouseY); //<>//
   if(state==1){
     all.checkAllBlock(new Variable());
   }
