@@ -1,24 +1,21 @@
-Tree all = new Tree();
-Variable v;
+ArrayList<Tree> all = new ArrayList<Tree>();
 IfTree i;
-ForTree f;
-String textState="";
-int state=0;  
+ForTree f; 
 color c;
 void setup(){
-  i = new IfTree();
-  v = new Variable();
-  f = new ForTree();
-  fullScreen();
-  /*size(1000, 500);*/
+  /*fullScreen();*/
+  size(1000, 500);
   background(255);
+  textSize(30);
+  i = new IfTree(20, 100);
+  f = new ForTree(20, 150);
 }
 void draw(){ //<>//
   background(255);
   noStroke();
   c = color(79, 128, 226);
   fill(c);
-  rect(0, 0, width/5, height);
+  rect(0, 0, width*0.3, height);
   c = color(255, 255, 255);
   fill(c);
   rect((width/5)*4, 0, width, height);
@@ -26,56 +23,22 @@ void draw(){ //<>//
   fill(c);
   textSize(25);
   text("Output", (width/5)*4+10, 50);
-  v.drawBlock(50, 100);
-  i.drawBlock(50, 200);
-  f.drawBlock(50, 300);
+  i.drawAllBlock();
+  f.drawAllBlock();
+  println(f.x, f.y, f.width, f.height);
+  println(mouseX, mouseY);
   
-  all.setCommand("Start");
-  all.setPosition(width*0.5, 40);
-  
-  all.drawAllBlock();
-  all.draw(width/2, height*0.5, width/2);
-  fill(0);
-  text(textState, width*0.9, 100);
 }
 
 void keyPressed(){
-  all.keypressed(key, keyCode); //<>//
 }
 
 void mousePressed(){
-  all.presses(mouseX, mouseY); //<>//
-  if(state==1){
-    all.checkAllBlock(new Variable());
-  }
-  else if(state==2){
-    all.checkAllBlock(new IfTree());
-  }
-  else if(state==3){
-    all.checkAllBlock(new ForTree());
-  }
-  else if(state==4){
-    all.checkRemove();
-  }
+  f.presses();
+  i.presses();
+}
 
-  if(mouseX>100 && mouseX<200 && mouseY>100 && mouseY<132){
-    state=1;
-    textState="Var";
-  }
-  else if(mouseX>100 && mouseX<200 && mouseY>200 && mouseY<232){
-    state=2;
-    textState="If";
-  }
-  else if(mouseX>100 && mouseX<200 && mouseY>300 && mouseY<332){
-    state=3;
-    textState="For";
-  }
-  else if(mouseX>100 && mouseX<200 && mouseY>400 && mouseY<432){
-    state=4;
-    textState="Remove";
-  }
-  else{
-    state=0;
-    textState="";
-  }
+void mouseDragged(){
+  i.dragedBlock();
+  f.dragedBlock();
 }

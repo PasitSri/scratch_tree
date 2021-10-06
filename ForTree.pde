@@ -7,8 +7,8 @@ public class ForTree extends Tree{
     fill(255);
   }
 
-  ForTree(){
-    setRepeat(10);
+  ForTree(float x, float y){
+    super(x, y);
   }
 
   void drawBlock(float x, float y){

@@ -6,6 +6,16 @@ public class Tree{
   float height = 0;
   float x = 0;
   float y = 0;
+  boolean onBox = false;
+  boolean locked = false;
+  float xOffset=0, yOffset=0;
+
+  Tree(float x, float y){
+    this.x=x;
+    this.y=y;
+    width = textWidth("run")+40;
+    height = textAscent()+10;
+  }
 
   void setPosition(float x, float y){
     this.x=x;
@@ -21,12 +31,31 @@ public class Tree{
   }
   
   void useCommand(){}
-  void presses(){}
 
-  void presses(int mx, int my){
-    int h=0;
+  void edit(){
     for(Tree tree: array){
-      tree.presses(mx, my);
+      tree.edit();
+    }
+  }
+
+  void dragedBlock(){
+    if(locked){
+      x=mouseX-xOffset;
+      y=mouseY-yOffset;
+    }
+  }
+
+  void presses(){
+    if(onBox){
+      locked = true;
+    }else{
+      locked = false;
+    }
+
+    xOffset = mouseX-x;
+    yOffset = mouseY-y;
+    for(Tree tree: array){
+      tree.presses();
     }
   }
 
@@ -56,7 +85,7 @@ public class Tree{
     return result;
   }
 
-  void drawBlock(float x, float y){
+  void drawBlock(){
     fill(c);
     width = textWidth(command)+40;
     height = textAscent()+10;
@@ -115,7 +144,6 @@ public class Tree{
       line(x, y+42, x+textWidth(command), y+42);
       stroke(0);
       strokeWeight(1);
-      drawBlock(x, y);
       return 0;
     }
   }
@@ -164,11 +192,14 @@ public class Tree{
   }
 
   void drawAllBlock(){
-    drawBlock(x, y);
-    checkHover(x, y);
+    if(mouseX>x && mouseX<x+width && mouseY>y && mouseY<y+height){
+      onBox = true;
+    }else{
+      onBox = false;
+    }
+    drawBlock();
     int h=0;
-    for(int i=0; i<array.size(); i++){
-      Tree tree = array.get(i);
+    for(Tree tree: array){
       h += 42;
       tree.setPosition(x+25, y+h);
       tree.drawAllBlock();

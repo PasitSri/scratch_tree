@@ -22,7 +22,8 @@ public class Variable extends Tree{
     fill(255); 
     text("Set "+" "+Vname+" "+" to "+" "+Vvalue , x+20, y+32);
   }
-  Variable(){
+  Variable(float x, float y){
+    super(x, y);
     setCommand();
   }
 

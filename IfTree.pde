@@ -10,6 +10,12 @@ public class IfTree extends Tree{
   float Xa, Xb;
   String Sa="0", Sb="0";
 
+  IfTree(float x, float y){
+    super(x, y);
+    width = textWidth("if==")+40+100+30;
+    height = textAscent()+10;
+  }
+
   void drawSelf(float x, float y){
     fill(c);
     circle(x, y, 50);
@@ -32,7 +38,9 @@ public class IfTree extends Tree{
     }
   }
 
-  void presses(int mx, int my) { 
+  void edit() { 
+    int mx = mouseX;
+    int my = mouseY;
     println(selectedA, selectedB);
     if (overBox(mx, my) == 1) {
       selectedA = true;
@@ -45,17 +53,9 @@ public class IfTree extends Tree{
       selectedA = false;
       selectedB = false;
     }
-    println(selectedA, selectedB);
-    int h=0;
-    for(Tree tree: array){
-      h += 42;
-      tree.setPosition(x+25, y+h);
-      tree.presses(mx, my);
-      h += 42*tree.getSize();
-    }
   }
 
-  void drawBlock(float x, float y){
+  void drawBlock(){
     fill(c);
     this.x=x;
     this.y=y;
