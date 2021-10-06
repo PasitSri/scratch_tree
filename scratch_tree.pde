@@ -2,6 +2,8 @@ ArrayList<Tree> all = new ArrayList<Tree>();
 IfTree i;
 ForTree f; 
 color c;
+Tree current;
+boolean addStatus = false;
 void setup(){
   /*fullScreen();*/
   size(1000, 500);
@@ -38,6 +40,7 @@ void keyPressed(){
 }
 
 void mousePressed(){
+  addStatus = true;
   if(mouseX>i.x && mouseX<i.x+i.width && mouseY>i.y && mouseY<i.y+i.height){
     println("test");
     IfTree newClass = new IfTree(i.x, i.y);
@@ -59,6 +62,19 @@ void mousePressed(){
 void mouseDragged(){
   for(int i=0; i<all.size(); i++){
     Tree e = all.get(i);
-    e.dragedBlock(all);
+    boolean ch = e.dragedBlock(all);
+    if(ch){
+      current = e;
+    }
   }
+}
+
+void mouseReleased(){
+  if(addStatus){
+    for(int i=0; i<all.size(); i++){
+      Tree e = all.get(i);
+      e.checkAdd(all, current);
+    }
+  }
+  addStatus = false;
 }

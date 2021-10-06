@@ -136,55 +136,61 @@ public class Tree{
     }
   }
 
-  int checkHover(float x, float y){
-    if(mouseX>x && mouseX<x+textWidth(command)/2 && mouseY>y && mouseY<y+35){
-      stroke(#9162e4);
-      strokeWeight(10);
-      line(x, y+42, x+textWidth(command)/2, y+42);
-      stroke(0);
-      strokeWeight(0);
+  int checkHover(float nX, float nY){
+    if(nX>x && nX<x+width/2 && nY>y+20 && nY<y+height){
       return 1;
     }
-    else if(mouseX>x+textWidth(command)/2 && mouseX<x+textWidth(command) && mouseY>y && mouseY<y+35){
-      stroke(#ff8a80);
-      strokeWeight(10);
-      line(x+textWidth(command)/2, y+42, x+textWidth(command), y+42);
-      stroke(0);
-      strokeWeight(0);
+    else if(nX>x+width/2 && nX<x+width && nY>y+20 && nY<y+height){
       return 2;
     }
-    else{
-      stroke(255);
-      strokeWeight(10);
-      line(x, y+42, x+textWidth(command), y+42);
-      stroke(0);
-      strokeWeight(1);
-      return 0;
+    return 0;
+  }
+
+  void checkAdd(ArrayList all, Tree newEl){
+    int check = checkHover(newEl.x, newEl.y);
+    if(check == 2){
+      all.remove(all.indexOf(newEl));
+      add(newEl, 0);
+      return ;
+    }
+    for(int i=0; i<array.size(); i++){
+      Tree e = array.get(i);
+      int checkNode = e.checkHover(newEl.x, newEl.y);
+      if(checkNode == 1){
+        all.remove(all.indexOf(newEl));
+        add(newEl, i+1);
+        return ;
+      }
+    }
+    for(Tree e: array){
+      e.checkAdd(all, newEl);
     }
   }
 
-  int checkAllBlock(Tree tree){
-    int check = checkHover(x, y);
-    int h=0;
-    if(check == 2){
-      add(tree, 0);
-      System.out.println("add");
-      return 0;
-    }
-    for(int i=0; i<array.size(); i++){
-      int c=0;
-      Tree t = array.get(i);
-      h += 42;
-      t.setPosition(x+25, y+h);
-      c = t.checkAllBlock(tree);
-      h += 42*t.getSize();
-      if(c == 1){
-        add(tree, i+1);
-        System.out.println("add");
-      }
-    }
-    return check;
-  }
+
+  /*int checkAllBlock(Tree tree){*/
+    /*int check = checkHover();*/
+    /*int h=0;*/
+    /*if(check == 2){*/
+      /*add(tree, 0);*/
+      /*System.out.println("add");*/
+      /*return 0;*/
+    /*}*/
+    /*for(int i=0; i<array.size(); i++){*/
+      /*int c=0;*/
+      /*Tree t = array.get(i);*/
+      /*h += 42;*/
+      /*t.setPosition(x+25, y+h);*/
+      /*c = t.checkAllBlock(tree);*/
+      /*h += 42*t.getSize();*/
+      /*if(c == 1){*/
+        /*add(tree, i+1);*/
+        /*System.out.println("add");*/
+      /*}*/
+    /*}*/
+    /*return check;*/
+  /*}*/
+
 
   int checkRemove(){
     int h=0;
@@ -208,6 +214,20 @@ public class Tree{
 
   void drawAllBlock(){
     drawBlock();
+    int l = checkHover(this.x, this.y);
+    if(l==1){
+      stroke(#9162e4);
+      strokeWeight(10);
+      line(x, y+height, x+width/2, y+height);
+      stroke(0);
+      strokeWeight(0);
+    }else if(l==2){
+      stroke(#ff8a80);
+      strokeWeight(10);
+      line(x+width/2, y+height, x+width, y+height);
+      stroke(0);
+      strokeWeight(0);
+    }
     int h=0;
     for(Tree tree: array){
       h += 42;
