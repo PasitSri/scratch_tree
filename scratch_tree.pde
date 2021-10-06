@@ -2,8 +2,8 @@ ArrayList<Tree> all = new ArrayList<Tree>();
 IfTree i;
 ForTree f; 
 color c;
-Tree current;
-boolean addStatus = false;
+Tree current = null;
+boolean dragedState = false;
 void setup(){
   /*fullScreen();*/
   size(1000, 500);
@@ -25,12 +25,16 @@ void draw(){ //<>//
   fill(c);
   textSize(25);
   text("Output", (width/5)*4+10, 50);
-  i.drawAllBlock();
-  f.drawAllBlock();
-  for(Tree e:all){
-    e.drawAllBlock();
+  if(dragedState){
+    c = color(#F5224F);
+    fill(c);
+    rect(0, height*0.8, width*0.3, height);
   }
-  
+  i.drawAllBlock(current);
+  f.drawAllBlock(current);
+  for(Tree e:all){
+    e.drawAllBlock(current);
+  }
 }
 
 void keyPressed(){
@@ -40,7 +44,7 @@ void keyPressed(){
 }
 
 void mousePressed(){
-  addStatus = true;
+  dragedState = true;
   if(mouseX>i.x && mouseX<i.x+i.width && mouseY>i.y && mouseY<i.y+i.height){
     println("test");
     IfTree newClass = new IfTree(i.x, i.y);
@@ -70,11 +74,21 @@ void mouseDragged(){
 }
 
 void mouseReleased(){
-  if(addStatus){
+  if(dragedState){
     for(int i=0; i<all.size(); i++){
       Tree e = all.get(i);
       e.checkAdd(all, current);
     }
   }
-  addStatus = false;
+  dragedState = false;
+
+  for(int i=0; i<all.size(); i++){
+    Tree e = all.get(i);
+    println(width*0.3, height*0.8);
+    println(e.x, e.y);
+    if(e.x<width*0.3 && e.y>height*0.8){
+      println("hi");
+      all.remove(i);
+    }
+  }
 }

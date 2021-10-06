@@ -52,6 +52,9 @@ public class IfTree extends Tree{
       selectedA = false;
       selectedB = false;
     }
+    for(Tree e: array){
+      e.edit();
+    }
     println(selectedA, selectedB);
   }
 
@@ -126,6 +129,10 @@ public class IfTree extends Tree{
           addText(KEY, 2);
         }
       }
+    }
+
+    for(Tree e:array){
+      e.keypressed(KEY, KEYCODE);
     }
 
     return false;

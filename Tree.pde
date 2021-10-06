@@ -9,6 +9,7 @@ public class Tree{
   float y = 0;
   boolean locked = false;
   float xOffset=0, yOffset=0;
+  boolean addState = false;
 
   Tree(float x, float y){
     this.x=x;
@@ -50,7 +51,7 @@ public class Tree{
       if(ch){
         println(x, y, x+width, y+height);
         println(tree.x, tree.y);
-        if((tree.x<x || tree.x>x+width ) && (tree.y<y || tree.y>y+height)){
+        if((tree.x<x || tree.x>x+width ) || (tree.y<y || tree.y>y+height)){
           println("hi");
           remove(array.indexOf(tree));
           all.add(tree);
@@ -147,6 +148,7 @@ public class Tree{
   }
 
   void checkAdd(ArrayList all, Tree newEl){
+    addState = true;
     int check = checkHover(newEl.x, newEl.y);
     if(check == 2){
       all.remove(all.indexOf(newEl));
@@ -155,6 +157,7 @@ public class Tree{
     }
     for(int i=0; i<array.size(); i++){
       Tree e = array.get(i);
+      e.addState = true;
       int checkNode = e.checkHover(newEl.x, newEl.y);
       if(checkNode == 1){
         all.remove(all.indexOf(newEl));
@@ -165,6 +168,7 @@ public class Tree{
     for(Tree e: array){
       e.checkAdd(all, newEl);
     }
+    addState = false;
   }
 
 
@@ -212,9 +216,14 @@ public class Tree{
     return 0;
   }
 
-  void drawAllBlock(){
+  void drawAllBlock(Tree e){
     drawBlock();
-    int l = checkHover(this.x, this.y);
+    int l;
+    if(addState){
+      l = checkHover(e.x, e.y);
+    }else{
+      l = checkHover(this.x, this.y);
+    }
     if(l==1){
       stroke(#9162e4);
       strokeWeight(10);
@@ -232,7 +241,7 @@ public class Tree{
     for(Tree tree: array){
       h += 42;
       tree.setPosition(x+25, y+h);
-      tree.drawAllBlock();
+      tree.drawAllBlock(e);
       h += 42*tree.getSize();
     }
   }
