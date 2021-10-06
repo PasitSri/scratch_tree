@@ -62,6 +62,7 @@ public class Tree{
   }
 
   void presses(){
+    addState = true;
     if(mouseX>x && mouseX<x+width && mouseY>y && mouseY<y+height){
       locked = true;
     }else{
@@ -148,7 +149,6 @@ public class Tree{
   }
 
   void checkAdd(ArrayList all, Tree newEl){
-    addState = true;
     int check = checkHover(newEl.x, newEl.y);
     if(check == 2){
       all.remove(all.indexOf(newEl));
