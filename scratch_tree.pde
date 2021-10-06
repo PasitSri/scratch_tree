@@ -25,8 +25,9 @@ void draw(){ //<>//
   text("Output", (width/5)*4+10, 50);
   i.drawAllBlock();
   f.drawAllBlock();
-  println(f.x, f.y, f.width, f.height);
-  println(mouseX, mouseY);
+  for(Tree e:all){
+    e.drawAllBlock();
+  }
   
 }
 
@@ -34,11 +35,25 @@ void keyPressed(){
 }
 
 void mousePressed(){
-  f.presses();
-  i.presses();
+  if(mouseX>i.x && mouseX<i.x+i.width && mouseY>i.y && mouseY<i.y+i.height){
+    println("test");
+    IfTree newClass = new IfTree(i.x, i.y);
+    all.add(newClass);
+    newClass.presses();
+  }
+  if(mouseX>f.x && mouseX<f.x+f.width && mouseY>f.y && mouseY<f.y+f.height){
+    println("test2");
+    ForTree newClass = new ForTree(f.x, f.y);
+    all.add(newClass);
+    newClass.presses();
+  }
+  for(Tree e: all){
+    e.presses();
+  }
 }
 
 void mouseDragged(){
-  i.dragedBlock();
-  f.dragedBlock();
+  for(Tree e:all){
+    e.dragedBlock();
+  }
 }
