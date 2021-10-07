@@ -12,7 +12,7 @@ public class IfTree extends Tree{
 
   IfTree(float x, float y){
     super(x, y);
-    width = textWidth("if==")+40+100+30;
+    width = textWidth("if==")+40+(W*2)+30;
     height = textAscent()+10;
   }
 
@@ -72,14 +72,14 @@ public class IfTree extends Tree{
     }else{
       fill(Background);
     }
-    rect(x+50, y, W, height,30);
+    rect(Xa, y, W, height,30);
     fill(0);
     if(selectedB){
       fill(BackgroundSelected);
     }else{
       fill(Background);
     }
-    rect(x+170, y, W, height,30);
+    rect(Xb, y, W, height,30);
     fill(0);
     textSize(20);
     text(Sa, Xa, y+32);
