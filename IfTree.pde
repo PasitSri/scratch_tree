@@ -29,11 +29,10 @@ public class IfTree extends Tree{
     Xb = x+170;
   }
 
-  void useCommand(){
+  void useFunction(){
     if(a==b){
-      for(int i=0; i<array.size();i++){
-        Tree tree = array.get(i);
-        tree.useCommand();
+      for(Tree e: array){
+        e.useFunction();
       }
     }
   }
@@ -55,7 +54,6 @@ public class IfTree extends Tree{
     for(Tree e: array){
       e.edit();
     }
-    println(selectedA, selectedB);
   }
 
   void drawBlock(){
@@ -91,7 +89,6 @@ public class IfTree extends Tree{
   }
 
   boolean keypressed(char KEY, int KEYCODE) {
-    println(selectedA,selectedB);
     if (selectedA) {
       if (KEYCODE == (int)BACKSPACE) {
         BACKSPACE(1);

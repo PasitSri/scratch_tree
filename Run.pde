@@ -5,6 +5,7 @@ public class Run extends Tree{
     width = textWidth("Runner");
     height = textAscent()+10;
   }
+
   void drawBlock(){
     fill(c);
     width = textWidth("Runner")+40;
@@ -14,6 +15,7 @@ public class Run extends Tree{
     textSize(32);
     text("Runner", x+20, y+32);
   }
+
   int checkHover(float nX, float nY){
     if(nX>x && nX<x+width && nY>y+20 && nY<y+height){
       return 2;
@@ -42,6 +44,12 @@ public class Run extends Tree{
       tree.setPosition(x+25, y+h);
       tree.drawAllBlock(e);
       h += 42*tree.getSize();
+    }
+  }
+
+  void useFunction(){
+    for(Tree e:array){
+      e.useFunction();
     }
   }
 }

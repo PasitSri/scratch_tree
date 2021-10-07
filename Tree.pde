@@ -31,7 +31,7 @@ public class Tree{
     array.remove(e);
   }
   
-  void useCommand(){}
+  void useFunction(){}
 
   void edit(){
     for(Tree tree: array){
@@ -49,10 +49,7 @@ public class Tree{
       Tree tree = array.get(i);
       boolean ch = tree.dragedBlock(all);
       if(ch){
-        println(x, y, x+width, y+height);
-        println(tree.x, tree.y);
         if((tree.x<x || tree.x>x+width ) || (tree.y<y || tree.y>y+height)){
-          println("hi");
           remove(array.indexOf(tree));
           all.add(tree);
         }
@@ -149,6 +146,12 @@ public class Tree{
   }
 
   void checkAdd(ArrayList all, Tree newEl){
+    if(all.size()<=1){
+      return;
+    }
+    if(newEl == null){
+      return;
+    }
     int check = checkHover(newEl.x, newEl.y);
     if(check == 2){
       all.remove(all.indexOf(newEl));

@@ -45,11 +45,11 @@ public class ForTree extends Tree{
     n = x;
   }
   
-  void useCommand(){
+  void useFunction(){
     for(int i=0; i<n; i++){
-      for(int j=0; j<array.size(); j++){
-        Tree tree = array.get(i);
-        tree.useCommand();
+      println(i);
+      for(Tree e: array){
+        e.useFunction();
       }
     }
   }
