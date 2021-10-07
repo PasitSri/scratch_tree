@@ -98,7 +98,7 @@ void mouseReleased(){
 
   for(int i=0; i<all.size(); i++){
     Tree e = all.get(i);
-    if(e.x<width*0.3 && e.y>height*0.8){
+    if(e.x<width*0.3){
       all.remove(i);
     }
   }

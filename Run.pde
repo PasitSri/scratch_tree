@@ -2,7 +2,7 @@ public class Run extends Tree{
   color c = color(#A636F5);
   Run(float x, float y){
     super(x, y);
-    width = textWidth("Runner");
+    width = textWidth("Runner")+40;
     height = textAscent()+10;
   }
 
