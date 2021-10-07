@@ -1,6 +1,7 @@
 ArrayList<Tree> all = new ArrayList<Tree>();
 IfTree i;
 ForTree f; 
+Run r;
 color c;
 Tree current = null;
 boolean dragedState = false;
@@ -11,6 +12,7 @@ void setup(){
   textSize(30);
   i = new IfTree(20, 100);
   f = new ForTree(20, 150);
+  r = new Run(20, 50);
 }
 void draw(){ //<>//
   background(255);
@@ -32,6 +34,7 @@ void draw(){ //<>//
   }
   i.drawAllBlock(current);
   f.drawAllBlock(current);
+  r.drawAllBlock(current);
   for(Tree e:all){
     e.drawAllBlock(current);
   }
@@ -45,6 +48,11 @@ void keyPressed(){
 
 void mousePressed(){
   dragedState = true;
+  if(mouseX>r.x && mouseX<r.x+r.width && mouseY>r.y && mouseY<r.y+r.height){
+    println("test");
+    Run newClass = new Run(r.x, r.y);
+    all.add(newClass);
+  }
   if(mouseX>i.x && mouseX<i.x+i.width && mouseY>i.y && mouseY<i.y+i.height){
     println("test");
     IfTree newClass = new IfTree(i.x, i.y);
