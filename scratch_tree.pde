@@ -2,6 +2,7 @@ ArrayList<Tree> all = new ArrayList<Tree>();
 IfTree i;
 ForTree f; 
 Run r;
+Cat cat;
 color c;
 Tree current = null;
 boolean dragedState = false;
@@ -13,6 +14,7 @@ void setup(){
   i = new IfTree(20, 100);
   f = new ForTree(20, 150);
   r = new Run(20, 50);
+  cat = new Cat(40, 750, 120); 
 }
 void draw(){ //<>//
   background(255);
@@ -37,6 +39,7 @@ void draw(){ //<>//
   i.drawAllBlock(current);
   f.drawAllBlock(current);
   r.drawAllBlock(current);
+  cat.draws();
   for(Tree e:all){
     e.drawAllBlock(current);
   }
