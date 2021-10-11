@@ -27,7 +27,11 @@ public class Move extends Tree{
     width = textWidth("Move")+50;
     height = textAscent()+10;
     rect(x, y, width+50, height,30);
-    fill(140);
+    if(selectedA){
+      fill(BackgroundSelected);
+    }else{
+      fill(Background);
+    }
     rect(x+textWidth("Move")+30 , y,50, height,30);
     fill(0);
     textSize(20);

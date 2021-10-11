@@ -3,7 +3,6 @@ ArrayList<Tree> all = new ArrayList<Tree>();
 IfTree i;
 ForTree f; 
 Run r;
-Cat cat;
 color c;
 Cat cat;
 Tree current = null;
@@ -11,7 +10,6 @@ boolean dragedState = false;
 Move m;
 void setup(){
   img = loadImage("ScratchCat.png");
-  //fullScreen();
   size(1000, 500);
   background(255);
   textSize(30);
@@ -19,19 +17,14 @@ void setup(){
   i = new IfTree(20, 100);
   f = new ForTree(20, 150);
   r = new Run(20, 50);
-<<<<<<< HEAD
   m = new Move(20, 200);
-=======
-  cat = new Cat(40, 750, 120); 
->>>>>>> 4d66755c8d5b2852db9ba5437eba994f51de493f
 }
 void draw(){ //<>//
-  background(255);
+  background(255); //<>//
   noStroke();
   c = color(79, 128, 226);
   fill(c);
   rect(0, 0, width*0.3, height);
-  //c = color(255, 255, 255);
   fill(230);
   rect((width/5)*4, 0, width, height);
   c = color(0, 0, 0);
@@ -50,11 +43,7 @@ void draw(){ //<>//
   i.drawAllBlock(current);
   f.drawAllBlock(current);
   r.drawAllBlock(current);
-<<<<<<< HEAD
   m.drawAllBlock(current);
-=======
-  cat.draws();
->>>>>>> 4d66755c8d5b2852db9ba5437eba994f51de493f
   for(Tree e:all){
     e.drawAllBlock(current);
   }
