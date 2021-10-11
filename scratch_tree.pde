@@ -8,6 +8,7 @@ Cat cat;
 Tree current = null;
 boolean dragedState = false;
 Move m;
+Rotate Ro;
 void setup(){
   img = loadImage("ScratchCat.png");
   size(1000, 500);
@@ -18,9 +19,10 @@ void setup(){
   f = new ForTree(20, 150);
   r = new Run(20, 50);
   m = new Move(20, 200);
-}
+  Ro = new Rotate(20, 250);
+} //<>//
 void draw(){ //<>//
-  background(255); //<>//
+  background(255);
   noStroke();
   c = color(79, 128, 226);
   fill(c);
@@ -45,6 +47,7 @@ void draw(){ //<>//
   f.drawAllBlock(current);
   r.drawAllBlock(current);
   m.drawAllBlock(current);
+  Ro.drawAllBlock(current);
   for(Tree e:all){
     e.drawAllBlock(current);
   }
@@ -75,6 +78,10 @@ void mousePressed(){
   }
   if(mouseX>m.x && mouseX<m.x+m.width && mouseY>m.y && mouseY<m.y+m.height){
     Move newClass = new Move(m.x, m.y);
+    all.add(newClass);
+  }
+  if(mouseX>Ro.x && mouseX<Ro.x+Ro.width && mouseY>Ro.y && mouseY<Ro.y+Ro.height){
+    Rotate newClass = new Rotate(Ro.x, Ro.y);
     all.add(newClass);
   }
   /*if(mouseX>f.x && mouseX<f.x+f.width && mouseY>f.y && mouseY<f.y+f.height){
