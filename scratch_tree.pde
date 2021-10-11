@@ -3,6 +3,7 @@ ArrayList<Tree> all = new ArrayList<Tree>();
 IfTree i;
 ForTree f; 
 Run r;
+Cat cat;
 color c;
 Cat cat;
 Tree current = null;
@@ -18,7 +19,11 @@ void setup(){
   i = new IfTree(20, 100);
   f = new ForTree(20, 150);
   r = new Run(20, 50);
+<<<<<<< HEAD
   m = new Move(20, 200);
+=======
+  cat = new Cat(40, 750, 120); 
+>>>>>>> 4d66755c8d5b2852db9ba5437eba994f51de493f
 }
 void draw(){ //<>//
   background(255);
@@ -45,7 +50,11 @@ void draw(){ //<>//
   i.drawAllBlock(current);
   f.drawAllBlock(current);
   r.drawAllBlock(current);
+<<<<<<< HEAD
   m.drawAllBlock(current);
+=======
+  cat.draws();
+>>>>>>> 4d66755c8d5b2852db9ba5437eba994f51de493f
   for(Tree e:all){
     e.drawAllBlock(current);
   }
