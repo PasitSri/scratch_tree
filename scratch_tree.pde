@@ -1,18 +1,24 @@
+PImage img;
 ArrayList<Tree> all = new ArrayList<Tree>();
 IfTree i;
 ForTree f; 
 Run r;
 color c;
+Cat cat;
 Tree current = null;
 boolean dragedState = false;
+Move m;
 void setup(){
-  /*fullScreen();*/
+  img = loadImage("ScratchCat.png");
+  //fullScreen();
   size(1000, 500);
   background(255);
   textSize(30);
+  cat = new Cat();
   i = new IfTree(20, 100);
   f = new ForTree(20, 150);
   r = new Run(20, 50);
+  m = new Move(20, 200);
 }
 void draw(){ //<>//
   background(255);
@@ -20,13 +26,15 @@ void draw(){ //<>//
   c = color(79, 128, 226);
   fill(c);
   rect(0, 0, width*0.3, height);
-  c = color(255, 255, 255);
-  fill(c);
+  //c = color(255, 255, 255);
+  fill(230);
   rect((width/5)*4, 0, width, height);
   c = color(0, 0, 0);
   fill(c);
   textSize(25);
   text("Output", (width/5)*4+10, 50);
+  
+  cat.display();
   if(dragedState){
     c = color(#F5224F);
     fill(c);
@@ -37,6 +45,7 @@ void draw(){ //<>//
   i.drawAllBlock(current);
   f.drawAllBlock(current);
   r.drawAllBlock(current);
+  m.drawAllBlock(current);
   for(Tree e:all){
     e.drawAllBlock(current);
   }
@@ -65,10 +74,14 @@ void mousePressed(){
     IfTree newClass = new IfTree(i.x, i.y);
     all.add(newClass);
   }
-  if(mouseX>f.x && mouseX<f.x+f.width && mouseY>f.y && mouseY<f.y+f.height){
-    ForTree newClass = new ForTree(f.x, f.y);
+  if(mouseX>m.x && mouseX<m.x+m.width && mouseY>m.y && mouseY<m.y+m.height){
+    Move newClass = new Move(m.x, m.y);
     all.add(newClass);
   }
+  /*if(mouseX>f.x && mouseX<f.x+f.width && mouseY>f.y && mouseY<f.y+f.height){
+    ForTree newClass = new ForTree(f.x, f.y);
+    all.add(newClass);
+  }*/
   for(Tree e: all){
     e.presses();
   }
