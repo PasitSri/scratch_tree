@@ -38,6 +38,7 @@ void draw(){ //<>//
     fill(c);
     rect(0, height*0.8, width*0.3, height);
   }
+  cat.getCoordinates();
   fill(#38E071);
   circle(width*0.75, height*0.10, 50);
   i.drawAllBlock(current);
