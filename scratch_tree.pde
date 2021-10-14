@@ -1,14 +1,21 @@
 PImage img;
 ArrayList<Tree> all = new ArrayList<Tree>();
+
 IfTree i;
 ForTree f; 
 Run r;
-color c;
 Cat cat;
-Tree current = null;
-boolean dragedState = false;
 Move m;
 Rotate Ro;
+Equal eq;
+NotEqual ne;
+Greater gr;
+Less le;
+
+color c;
+Tree current = null;
+boolean dragedState = false;
+
 void setup(){
   img = loadImage("ScratchCat.png");
   size(1000, 800);
@@ -20,6 +27,10 @@ void setup(){
   r = new Run(20, 50);
   m = new Move(20, 200);
   Ro = new Rotate(20, 250);
+  eq = new Equal(20, 300);
+  ne = new NotEqual(20, 350);
+  gr = new Greater(20, 400);
+  le = new Less(20, 450);
 } //<>//
 void draw(){ //<>//
   background(255);
@@ -48,6 +59,10 @@ void draw(){ //<>//
   r.drawAllBlock(current);
   m.drawAllBlock(current);
   Ro.drawAllBlock(current);
+  eq.drawAllBlock(current);
+  ne.drawAllBlock(current);
+  gr.drawAllBlock(current);
+  le.drawAllBlock(current);
   for(Tree e:all){
     e.drawAllBlock(current);
   }
@@ -86,6 +101,22 @@ void mousePressed(){
   }
   if(mouseX>f.x && mouseX<f.x+f.width && mouseY>f.y && mouseY<f.y+f.height){
     ForTree newClass = new ForTree(f.x, f.y);
+    all.add(newClass);
+  }
+  if(mouseX>eq.x && mouseX<eq.x+eq.width && mouseY>eq.y && mouseY<eq.y+eq.height){
+    Equal newClass = new Equal(eq.x, eq.y);
+    all.add(newClass);
+  }
+  if(mouseX>ne.x && mouseX<ne.x+ne.width && mouseY>ne.y && mouseY<ne.y+ne.height){
+    NotEqual newClass = new NotEqual(ne.x, ne.y);
+    all.add(newClass);
+  }
+  if(mouseX>gr.x && mouseX<gr.x+gr.width && mouseY>gr.y && mouseY<gr.y+gr.height){
+    Greater newClass = new Greater(gr.x, gr.y);
+    all.add(newClass);
+  }
+  if(mouseX>le.x && mouseX<le.x+le.width && mouseY>le.y && mouseY<le.y+le.height){
+    Less newClass = new Less(le.x, le.y);
     all.add(newClass);
   }
   for(Tree e: all){

@@ -28,6 +28,7 @@ public class Cat{
     fill(0);
     textSize(15);
     text(Coordinates, (width/5)*4+10, 50+20);
+    textSize(30);
   }
   void display(){
   //imageMode(CENTER);
