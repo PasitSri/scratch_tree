@@ -104,7 +104,6 @@ public class IfTree extends Tree{
     if(lockedCon){
       if(con != null){
         boolean ch = con.dragedBlock(all);
-        println("hi");
         if(ch){
           if((con.x<Xa || con.x>Xa+width ) || (con.y<y || con.y>y+height)){
             all.add(con);
@@ -129,6 +128,9 @@ public class IfTree extends Tree{
 
   void checkAdd(ArrayList all, Tree newEl){
     Condition co = new Condition(x, y, "0");
+    for(Tree e: array){
+      e.checkAdd(all, newEl);
+    }
     if(all.size()<=1){
       return;
     }
@@ -157,9 +159,6 @@ public class IfTree extends Tree{
         add(newEl, i+1);
         return ;
       }
-    }
-    for(Tree e: array){
-      e.checkAdd(all, newEl);
     }
     addState = false;
   }
