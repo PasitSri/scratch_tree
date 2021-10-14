@@ -2,7 +2,7 @@ public class IfTree extends Tree{
   color c = color(#4ca64c);  //green
   Tree con = null;
   float Xa = 0;
-  int W=50;
+  float W=50;
   boolean lockedCon = false;
   boolean locked = false;
   float xOffset=0, yOffset=0;
@@ -48,11 +48,13 @@ public class IfTree extends Tree{
   void drawBlock(){
     fill(c);
     Xa = x+50;
+    if(con != null){
+      W = con.width;
+    }else{
+      W = 50;
+    }
     width = textWidth("if")+W+30;
     height = textAscent()+10;
-    if(con != null){
-      width = textWidth("if"+30+con.width);
-    }
     rect(x, y, width, height,30);
     if(con != null){
       con.setPosition(Xa, y);
@@ -70,13 +72,13 @@ public class IfTree extends Tree{
 
   void presses(){
     addState = true;
-    if(mouseX>x && mouseX<x+width && mouseY>y && mouseY<y+height){
+    if(mouseX>x && mouseX<x+width-W && mouseY>y && mouseY<y+height){
       locked = true;
     }else{
       locked = false;
     }
     if(con!=null){
-      if(mouseX>Xa && mouseX<Xa+W && mouseY>y && mouseY<y+height){
+      if(mouseX>Xa && mouseX<Xa+width && mouseY>y && mouseY<y+height){
         lockedCon = true;
       }else{
         lockedCon = false;
@@ -100,11 +102,14 @@ public class IfTree extends Tree{
       return true;
     }
     if(lockedCon){
-      boolean ch = con.dragedBlock(all);
-      if(ch){
-        if((con.x<x || con.x>x+width ) || (con.y<y || con.y>y+height)){
-          all.add(con);
-          con = null;
+      if(con != null){
+        boolean ch = con.dragedBlock(all);
+        println("hi");
+        if(ch){
+          if((con.x<Xa || con.x>Xa+width ) || (con.y<y || con.y>y+height)){
+            all.add(con);
+            con = null;
+          }
         }
       }
     }
