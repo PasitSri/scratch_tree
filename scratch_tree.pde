@@ -63,6 +63,7 @@ void draw(){ //<>//
   ne.drawAllBlock(current);
   gr.drawAllBlock(current);
   le.drawAllBlock(current);
+  Condition co = new Condition(3, 3, "0");
   for(Tree e:all){
     e.drawAllBlock(current);
   }

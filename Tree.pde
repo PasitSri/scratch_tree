@@ -18,6 +18,8 @@ public class Tree{
     height = textAscent()+10;
   }
 
+  boolean useCondition(){return true;}
+
   void setPosition(float x, float y){
     this.x=x;
     this.y=y;

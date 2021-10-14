@@ -163,6 +163,7 @@ public class Condition extends Tree{
   private int overBox(int x, int y) {
     if (x >= Xa && x <= Xa + W) {
       if (y >= this.y && y <= this.y + height) {
+        println("hi");
         return 1;
       }
     }
