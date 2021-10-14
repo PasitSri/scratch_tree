@@ -58,8 +58,6 @@ public class IfTree extends Tree{
 
   void drawBlock(){
     fill(c);
-    this.x=x;
-    this.y=y;
     Xa = x+50;
     Xb = x+170;
     width = textWidth("if==")+40+100+30;

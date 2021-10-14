@@ -1,5 +1,5 @@
 public class Rotate extends Tree{
-  color c = color(#87CEEB);  //green
+  color c = color(#ef6f53);  //green
   boolean selectedA = false;
   int La =1;
   float a=0, b=0;
@@ -45,9 +45,14 @@ public class Rotate extends Tree{
     this.y=y;
     Xa = x+textWidth("Rotate")+30;
   }
+  
   void useFunction(){
-    
+    if(!Sa.equals("")){
+      int newNumber = Integer.valueOf(Sa);
+      cat.rotate(newNumber);
+    }
   }
+
 
   void edit() { 
     int mx = mouseX;

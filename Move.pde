@@ -1,5 +1,5 @@
 public class Move extends Tree{
-  color c = color(#87CEEB);  //green
+  color c = color(#ef6f53);  //green
   boolean selectedA = false;
   int La =1;
   float a=0, b=0;
@@ -46,8 +46,10 @@ public class Move extends Tree{
     Xa = x+textWidth("Move")+30;
   }
   void useFunction(){
-    int newNumber = Integer.valueOf(Sa);
-    cat.move(newNumber);
+    if(!Sa.equals("")){
+      int newNumber = Integer.valueOf(Sa);
+      cat.move(newNumber);
+    }
   }
 
   void edit() { 
@@ -79,7 +81,7 @@ public class Move extends Tree{
         //boolean isKeySmallLetter = (KEY >= 'a' && KEY <= 'z');
         boolean isKeyNumber = (KEY >= '0' && KEY <= '9');
 
-        if (isKeyNumber) {
+        if (isKeyNumber || KEY == '-') {
           addText(KEY, 1);
         }
       }

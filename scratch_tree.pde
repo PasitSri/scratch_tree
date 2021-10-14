@@ -11,7 +11,7 @@ Move m;
 Rotate Ro;
 void setup(){
   img = loadImage("ScratchCat.png");
-  size(1000, 500);
+  size(1000, 800);
   background(255);
   textSize(30);
   cat = new Cat();
@@ -33,7 +33,7 @@ void draw(){ //<>//
   fill(c);
   textSize(25);
   text("Output", (width/5)*4+10, 50);
-  
+  //println(cat.r);
   cat.display();
   if(dragedState){
     c = color(#F5224F);
@@ -84,10 +84,10 @@ void mousePressed(){
     Rotate newClass = new Rotate(Ro.x, Ro.y);
     all.add(newClass);
   }
-  /*if(mouseX>f.x && mouseX<f.x+f.width && mouseY>f.y && mouseY<f.y+f.height){
+  if(mouseX>f.x && mouseX<f.x+f.width && mouseY>f.y && mouseY<f.y+f.height){
     ForTree newClass = new ForTree(f.x, f.y);
     all.add(newClass);
-  }*/
+  }
   for(Tree e: all){
     e.presses();
   }
